@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    </script>
+
+    <style type="text/css">
+
+    @font-face {
+  font-family: puppybellies;
+  src: url(assets/fonts/Puppybellies.ttf);
+}
+
+    body {
+        background-image: url("/assets/images/bg.png");
+        background-color: #ede3c7;
+    }
+
+    .floating {  
+    animation-name: floating;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+    
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    65%  { transform: translate(0, 4px); }
+    to   { transform: translate(0, -0px); }    
+}
+
+    
+
+    #title {
+        font-family: puppybellies;
+        font-size: 56px;
+        color: #E8AF12;
+        letter-spacing: 5px;
+        text-shadow: 5px 5px #0A4964, 
+                    1px 1px 0 #482F08,
+                    1px -1px 0 #482F08,
+                    -1px -1px 0 #482F08;
+        cursor: pointer;
+        position: fixed;
+        z-index: 5px;
+    }
+
+    .button {
+        cursor: pointer;
+        border-radius: 12px;
+        border: 266575;
+        box-shadow: 0 9px #999;
+    }
+
+    .button:hover {
+         background: #6DC2CB;
+    }
+
+    .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+
+    }
+
+    #viewbutton{
+        font-size: 36px;
+        position: fixed;
+        font-family: puppybellies;
+        width: 250px;
+        left: 35px;
+        top: 100px;
+        z-index: 5px;
+    }
+
+    .image {
+        max-height: 300px;
+        width: 125px;
+        margin:25px;
+        position: relative;
+    }
+
+    .image:hover {
+        z-index: 4;
+        animation: scaleup 1s;
+        transform-origin: 1 1;
+        animation-fill-mode: forwards;
+    }
+
+    .image:hover + .rolltitle {
+        display: block;
+    }
+
+    @keyframes scaleup {
+    0% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(2.0);
+    }
+}
+
+    .rolltitle {
+        position: fixed;
+        z-index: 6;
+        font-family: puppybellies;
+        font-size: 72px;
+        margin-left: 150px;
+        left: 200px;
+        top: 50px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        text-shadow: -2px 2px white, 
+                    2px 2px 0 white,
+                    2px -2px 0 white,
+                    -2px -2px 0 white;
+        display: none;
+
+    }
+
+    .rarity {
+        position: fixed;
+        z-index: 6;
+        font-family: puppybellies;
+        font-size: 72px;
+        margin-left: 150px;
+        left: 300px;
+        top: 100px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        text-shadow: -2px 2px white, 
+                    2px 2px 0 white,
+                    2px -2px 0 white,
+                    -2px -2px 0 white;
+        display: none;
+
+    }
+
+    .w3-container { 
+            position: fixed;
+            border: 15px ridge #9f8145;
+            border-radius: 7px;
+            z-index: 5;
+    }
+
+    #divider {
+            height: 150px;
+            width: 1390px;
+            background-image: url(http://1.bp.blogspot.com/-U5FYY2bt-kc/UVbNc_LkKFI/AAAAAAAATbw/UUh67jh8Y3I/s1600/gingahmPaperYel24l.png);
+    }
+
+    #dividertwo {
+        position: fixed;
+        right: 12px;
+        height: 520px;
+        width: 300px;
+        top: 200px;
+        background-image: url(http://1.bp.blogspot.com/-U5FYY2bt-kc/UVbNc_LkKFI/AAAAAAAATbw/UUh67jh8Y3I/s1600/gingahmPaperYel24l.png);
+    }
+
+    #container {
+        width: 1050px;
+        top: 200px;
+        overflow-y: auto;
+        height: 520px;
+        position: absolute;
+    }
+
+    /*.rollrarity {
+        position: fixed;
+        z-index: 6;
+        font-family: puppybellies;
+        font-size: 72px;
+        margin-left: 150px;
+        left: 200px;
+        top: 50px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        text-shadow: -2px 2px white, 
+                    2px 2px 0 white,
+                    2px -2px 0 white,
+                    -2px -2px 0 white;
+
+    }*/
+            
+        
+
+
+    </style>
+
+</head>
+
+
+
+<body>
+        <div id="divider" class="w3-container">
+        <h1 id="title" class="floating" >My Rolls</h1>
+        <button id="viewbutton" class="button" onclick="displayrolls()">View My Rolls</button>
+        </div>
+
+        <div id="dividertwo" class="w3-container">
+            <p class="rarity"></p>
+        </div>
+        <div id="container" class="w3-container">
+
+        </div>
+
+<script>
+
+var totalrolls = JSON.parse(localStorage.myArrData);
+
+const fiveroll = ["Grumpy Cat", "Pepe", "Horny Jail Dogs", "Nyan Cat", "Keyboard Cat", "Tom", "Doge", "Jerry", "Spongebob", "Patrick", "Kermit the Frog", "No Talk Me Angy Cat", "Big Chungus", "Dance Till You're Dead Dog", "Egg Dog", "Harambe", "Longcat", "Sanic", "Ugandan Knuckles"];
+
+const fourroll = ["Panorama Cat", "Annoying Dog From Undertale", "Why Is It Empty Cat", "Popcat", "Muscular Shiba", "Dogecoin", "Henlo Stinky Lizard", "Coughing Cat", "Tom Nook", "Peepo", "Mr Krabs", "Squidward", "Remy", "Yelling Goose", "Cat That Dislikes Banana", "Dat Boi", "Cat In Overalls", "Walter", "Bird Without Wings", "Blink Motherfucker Cat", "Cat Transcendence", "Communist Bugs Bunny", "Duolingo Owl", "Deer Being Interviewed", "Perry The Platypus", "Walter", "Weird Thing With Arms Out", "Cursed Black Cat"];
+
+const threeroll = ["Cat With Pants", "Cat Looking At Front Camera", "Disgusted Cat", "Crying Cat", "Wide Mouth Cat", "Awkward Chihuahua", "Wine Glass Dog", "Tired Cat", "Ikea Bear", "Pissed Chihuahua", "Smiling Chihuahua", "Strong Cat", "Hooded Chihuahua", "TikTok Warp Animal", "Dog At Computer", "Dog On Phone", "Dog Wearing Pantyhose", "Eyebrows Chihuahua", "Fat Chihuahua", "Floating Cat", "Front Camera Raccoon", "Furrowed Eyebrows Cat", "Screaming Chihuahua", "Shocked Cat", "Staring Hamster", "Yamero Crow", "Cat Drinking From Faucet", "Blurry Shaking Dog", "Human Faced Dog", "That Wind Can Blowing Dog"];
+
+var rarity
+
+    function displayrolls() {
+        for (let i = 0; i < totalrolls.length; i++) {
+        var x = document.createElement("IMG");
+        var y = "assets/images/" + totalrolls[i] +".png"
+        var container = document.getElementById("container");
+        x.setAttribute("src", y );
+        x.className = "image";
+
+        if (fiveroll.includes(totalrolls[i])) {
+                rarity = "fivestar"
+            } else if (fourroll.includes(totalrolls[i])) {
+                rarity = "fourstar"
+            } else if (threeroll.includes(totalrolls[i])) {
+                rarity = "threestar"
+            }
+
+        x.classList.add(rarity);
+        container.appendChild(x);
+
+        var z = document.createElement("DIV");
+        z.innerHTML = totalrolls[i];
+        z.className = "rolltitle";
+        container.appendChild(z);
+
+
+
+        };
+    };
+
+    
+
+    </script>
+
+</body>
+
+</html>
+
+
+    
+
+
+

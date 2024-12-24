@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    </script>
+
+    <style type="text/css">
+
+    @font-face {
+  font-family: puppybellies;
+  src: url(assets/fonts/Puppybellies.ttf);
+}
+
+    body {
+        background-image: url("assets/images/bg.png");
+        background-color: #ede3c7;
+    }
+
+    .active {
+    position:absolute;
+    transform-origin: 1 1;
+    animation: biggify 2s ease-out alternate;
+    animation-delay: 2.3s;
+    }
+
+@keyframes biggify {
+    0% {
+        transform: scale(1.0);
+        opacity: 50%;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0%;
+    }
+}
+
+    .floating {  
+    animation-name: floating;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+    
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    65%  { transform: translate(0, 4px); }
+    to   { transform: translate(0, -0px); }    
+}
+
+    .button {
+        cursor: pointer;
+        border-radius: 12px;
+        border: 266575;
+        box-shadow: 0 9px #999;
+    }
+
+    .button:hover {
+         background: #6DC2CB;
+    }
+
+    .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+
+    }
+
+
+    .silhouette {
+        filter: contrast(0) sepia(100%) hue-rotate(12deg) saturate(500%) brightness(100%);
+    }
+
+    .w3-container {
+            .w3-container 
+            position: absolute;
+            border: 15px ridge #9f8145;
+            border-radius: 7px;
+            background-image: url(http://1.bp.blogspot.com/-U5FYY2bt-kc/UVbNc_LkKFI/AAAAAAAATbw/UUh67jh8Y3I/s1600/gingahmPaperYel24l.png);
+            
+        
+        }
+
+    #title {
+        font-family: puppybellies;
+        font-size: 56px;
+        color: #E8AF12;
+        letter-spacing: 5px;
+        text-shadow: 5px 5px #0A4964, 
+                    1px 1px 0 #482F08,
+                    1px -1px 0 #482F08,
+                    -1px -1px 0 #482F08;
+        cursor: pointer;
+    }
+
+    #rollimage {
+        height: 325px;
+        position: relative;
+        bottom: 50px;
+        display: block;
+    }
+
+    #animationpic {
+        height: 325px;
+        position: relative;
+        bottom: 375px;
+        z-index:3;
+        opacity: 0%;
+    }
+
+    #rolltitle {
+        position: relative;
+        font-family: puppybellies;
+        bottom: 400px;
+        font-size: 48px;
+        color: #E8AF12;
+        letter-spacing: 5px;
+        text-shadow: 5px 5px #0A4964, 
+                    1px 1px 0 #482F08,
+                    1px -1px 0 #482F08,
+                    -1px -1px 0 #482F08;
+        font-weight: bold;
+        z-index: 2;
+        display: block;
+    }
+
+    #starone {
+        width: 10%;
+        position: absolute;
+        top: 200px;
+        right: 300px;
+        display: none;
+
+    }
+
+    #startwo {
+        width: 10%;
+        position: absolute;
+        top: 250px;
+        right: 300px;
+        display: none;
+
+    }
+
+    #starthree {
+        width: 10%;
+        position: absolute;
+        top: 300px;
+        right: 300px;
+        display: none;
+
+    }
+
+    #starfour {
+        width: 10%;
+        position: absolute;
+        top: 350px;
+        right: 300px;
+        display: none;
+    }
+
+    #starfive {
+        width: 10%;
+        position: absolute;
+        top: 400px;
+        right: 300px;
+        display: none;
+    }
+
+    #box {
+        position: absolute;
+        bottom: 20px;
+        left: 375px;
+        width: 700px;
+        height: 75px;
+    }
+
+    #boxtwo {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        width: 300px;
+        height: 75px;
+    }
+
+    #audio {
+        position: absolute;
+        z-index: 2;
+        left: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    #summonone{
+        font-size: 36px;
+        position:  relative;
+        font-family: puppybellies;
+        width: 250px;
+        right: 50px;
+        top: 10px;
+    }
+
+    #summonten{
+        font-size: 36px;
+        position: relative;
+        font-family: puppybellies;
+        width: 250px;
+        left: 50px;
+        top: 10px;
+    }
+
+    #viewbutton{
+        font-size: 36px;
+        position: relative;
+        font-family: puppybellies;
+        width: 250px;
+        top: 10px;
+        left: 20px;
+    }
+
+    </style>
+
+</head>
+
+
+
+<body>
+<!-- audio -->
+
+    <audio id="audio" controls autoplay>
+        <source src="assets/audio/neopets.mp3" type="audio/mpeg">
+    </audio>
+
+<!-- title -->
+    <center>
+
+        <div id="title" class="floating" >
+            <h1>Animal Meme Gacha</h1>
+        </div>
+
+
+<!-- box -->
+
+        <div id="box" class="w3-container">
+                <audio id="summonwoosh" src="assets/audio/summon.mp3"></audio>
+                <button id="summonone" class="button" onclick="summon(); triggerreveal(); summonsound();">Summon x1</button>
+                <button id="summonten" class="button" onclick="">Summon x10</button>
+        </div>
+
+<!-- images n image title -->
+
+        <img id="rollimage" class="silhouette">
+        <img id="animationpic" class="active">
+        <p id="rolltitle"></p>
+
+    </center>
+ <!-- view my rolls --> 
+
+        <div class="w3-container" id="boxtwo">
+        <button class="button" id="viewbutton" onclick="viewcollection()">View Collection</button>
+        </div>
+<!-- stars -->
+
+    <div>
+        <img id="starone" src="assets/images/star.png">
+        <img id="startwo" src="assets/images/star.png">
+        <img id="starthree" src="assets/images/star.png">
+        <img id="starfour" src="assets/images/star.png">
+        <img id="starfive" src="assets/images/star.png">
+    </div>
+
+    
+<!-- script -->
+    <script>
+
+// Roll list
+        const fiveroll = ["Grumpy Cat", "Pepe", "Horny Jail Dogs", "Nyan Cat", "Keyboard Cat", "Tom", "Doge", "Jerry", "Spongebob", "Patrick", "Kermit the Frog", "No Talk Me Angy Cat", "Big Chungus", "Dance Till You're Dead Dog", "Egg Dog", "Harambe", "Longcat", "Sanic", "Ugandan Knuckles"];
+
+        const fourroll = ["Panorama Cat", "Annoying Dog From Undertale", "Why Is It Empty Cat", "Popcat", "Muscular Shiba", "Dogecoin", "Henlo Stinky Lizard", "Coughing Cat", "Tom Nook", "Peepo", "Mr Krabs", "Squidward", "Remy", "Yelling Goose", "Cat That Dislikes Banana", "Dat Boi", "Cat In Overalls", "Walter", "Bird Without Wings", "Blink Motherfucker Cat", "Cat Transcendence", "Communist Bugs Bunny", "Duolingo Owl", "Deer Being Interviewed", "Perry The Platypus", "Walter", "Weird Thing With Arms Out", "Cursed Black Cat"];
+
+        const threeroll = ["Cat With Pants", "Cat Looking At Front Camera", "Disgusted Cat", "Crying Cat", "Wide Mouth Cat", "Awkward Chihuahua", "Wine Glass Dog", "Tired Cat", "Ikea Bear", "Pissed Chihuahua", "Smiling Chihuahua", "Strong Cat", "Hooded Chihuahua", "TikTok Warp Animal", "Dog At Computer", "Dog On Phone", "Dog Wearing Pantyhose", "Eyebrows Chihuahua", "Fat Chihuahua", "Floating Cat", "Front Camera Raccoon", "Furrowed Eyebrows Cat", "Screaming Chihuahua", "Shocked Cat", "Staring Hamster", "Yamero Crow", "Cat Drinking From Faucet", "Blurry Shaking Dog", "Human Faced Dog", "That Wind Can Blowing Dog"];
+
+        const totalrolls = []
+
+//The Big Summon
+
+        function summon(){
+
+            var element = document.getElementById("rollimage");
+            element.classList.add("silhouette");
+
+            var roll = Math.random();
+//determines type of roll
+            // 3.01% 5 star
+            if (roll <= 0.03) {
+                roll = 1
+            }
+
+            // 16.61% 4 star
+            else if (roll < 0.1661) {
+                roll = 2
+            }
+
+            // 80.38% 3 star
+            else {
+                roll = 3
+            }
+//narrows down what you pull and displays stars
+            switch (roll) {
+
+                case 1:
+                    roll = fiveroll[Math.floor(Math.random() * 19)];
+                    var rarity = 5
+                    $("#starone").hide().fadeIn(2000);
+                $("#startwo").hide().delay(500).fadeIn(2000);
+                $("#starthree").hide().delay(1000).fadeIn(2000);
+                $("#starfour").hide().delay(1500).fadeIn(2000);
+                $("#starfive").hide().delay(2000).fadeIn(2000);
+                break;
+
+                case 2:
+                    roll = fourroll[Math.floor(Math.random() * 27)];
+                    var rarity = 4
+                $("#starfive").hide();
+                $("#starone").hide().fadeIn(2000);
+                $("#startwo").hide().delay(500).fadeIn(2000);
+                $("#starthree").hide().delay(1000).fadeIn(2000);
+                $("#starfour").hide().delay(1500).fadeIn(2000);
+                break;
+
+                case 3:
+                    roll = threeroll[Math.floor(Math.random() * 30)];
+                    var rarity = 3
+                $("#starfour").hide();
+                $("#starfive").hide();
+                $("#starone").hide().fadeIn(2000);
+                $("#startwo").hide().delay(500).fadeIn(2000);
+                $("#starthree").hide().delay(1000).fadeIn(2000);
+                break;  
+            }
+// adds result to total rolls array
+
+            totalrolls.push(roll);
+
+// Displays roll image, roll animation, and role title
+
+            document.getElementById("rolltitle").innerHTML = roll;
+
+            document.getElementById("rollimage").src = "assets/images/" + roll +".png"
+
+            document.getElementById("animationpic").src = "assets/images/" + roll +".png"
+
+//fade effects            
+
+            $("#rollimage").hide().fadeIn(2000);
+
+            $("#rolltitle").hide().delay(2300).fadeIn();
+
+        }
+
+
+
+// turns silhouette into picture
+
+        function triggerreveal(){
+            setTimeout(function(){revealimage()}, 2300)
+        }
+
+        function revealimage() {
+            var element = document.getElementById("rollimage");
+          element.classList.remove("silhouette");
+        }
+
+//summon sound
+
+        function summonsound () {
+            document.getElementById('summonwoosh').play();
+                var audio = document.getElementById('summonwoosh');
+                if (audio.paused) {
+                    audio.summonsound();
+                }else{
+                    audio.currentTime = 0
+                }
+        }
+
+//refreshes animation per roll
+
+        $(document).ready(function() {
+            $("#summonone").click(function() {
+                $('#animationpic').addClass('active');
+                $('#animationpic').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+                $(this).removeClass('active').delay(2300);
+                });
+            });
+        });
+
+//sends rolls to collection page
+
+        function viewcollection() {
+            localStorage.myArrData=JSON.stringify(totalrolls);
+            window.open("collection.html")
+            // localStorage.stardata=JSON.stringify();
+        }
+
+    
+
+    </script>
+
+</body>
+
+</html>
+
+
+    
+
+
+
